@@ -3,5 +3,12 @@
 #        drivetrain.drive_for(FORWARD, 1, INCHES)
 #    drivetrain.turn_for(LEFT, 90)
 
+import sys
+import main
+
+args = sys.argv[1:]
+drivetrain = args[0]
+brain = args[1]
+
 for _ in range(4):
     drivetrain.drive_for(FORWARD, 1, INCHES)

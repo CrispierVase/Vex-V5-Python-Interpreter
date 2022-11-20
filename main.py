@@ -24,8 +24,6 @@ YELLOW = '\x79'
 pygame.init()
 
 args = sys.argv[1:]
-print(args)
-
 grid_size = [5, 5]
 desired_size = [16 * 8 * grid_size[0], 16 * 8 * grid_size[1]]
 
@@ -213,30 +211,32 @@ running = True
 code_run = False
 
 
-
-running = True
-while running:
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            running = False
-    win.fill((0, 0, 0))
-
-    # draw stuff here
-    for row in tiles:
-        for tile in row:
-            tile.draw()
-    drivetrain.draw()
-    
-    pygame.display.flip()
-    if not code_run:
-        self.que.put(getattr(exec(code), drivetrain))
+async def run_user_code(code=program_contents, *args, **kwargs):
+    await exec(code)
 
 
-pygame.quit()
+async def draw(*args, **kwargs):
+    drivetrain = Drivetrain()
+    brain = Brain()
+    running = True
+    code_run = False
+    while running:
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                running = False
+        win.fill((0, 0, 0))
 
+        # draw stuff here
+        for row in tiles:
+            for tile in row:
+                tile.draw()
+        drivetrain.draw()
 
-runner = Runner()
-vals = asyncio.gather(runner.draw(),
-    runner.run_user_code())
+        pygame.display.flip()
 
+    pygame.quit()
 
+async def main():
+    await asyncio.gather(asyncio.to_thread(draw, run_user_code))
+
+asyncio.run(main())
