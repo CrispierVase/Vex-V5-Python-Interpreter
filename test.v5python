@@ -1,0 +1,7 @@
+# while True:
+#    for _ in range(4):
+#        drivetrain.drive_for(FORWARD, 1, INCHES)
+#    drivetrain.turn_for(LEFT, 90)
+
+for _ in range(4):
+    drivetrain.drive_for(FORWARD, 1, INCHES)
