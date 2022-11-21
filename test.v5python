@@ -1,14 +1,24 @@
-# while True:
-#    for _ in range(4):
-#        drivetrain.drive_for(FORWARD, 1, INCHES)
-#    drivetrain.turn_for(LEFT, 90)
+#!/usr/bin/python3
 
-import sys
 import main
 
-args = sys.argv[1:]
-drivetrain = args[0]
-brain = args[1]
+SECONDS = '\x53'
+FORWARD = '\x46'
+REVERSE = '\x42'
+MM = '\x4D\x4D'
+INCHES = '\x49\x4E'
+DEGREES = '\x44'
+RIGHT = '\x52'
+LEFT = '\x4C'
+GREEN = '\x67'
+RED = '\x72'
+YELLOW = '\x79'
 
-for _ in range(4):
-    drivetrain.drive_for(FORWARD, 1, INCHES)
+drivetrain = main.Drivetrain(4, 4, 1)
+brain = main.Brain()
+
+drivetrain.draw()
+
+while True:
+    drivetrain.drive_for(FORWARD, 4, INCHES)
+    drivetrain.turn_for(LEFT, 90, DEGREES)

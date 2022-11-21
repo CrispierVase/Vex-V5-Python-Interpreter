@@ -1,0 +1,22 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "VexV5Interpreter"
+version = "0.1.1"
+authors = [
+  { name="Bryson Smith", email="brysonisaiah0115@yahoo.com" },
+]
+description = "This project allows for the running of Vex V5 Python Code without a robot present. "
+readme = "Documentation.md"
+requires-python = ">=3.7"
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Operating System :: OS Independent",
+]
+dependencies = ["pygame"]
+
+[project.urls]
+"Homepage" = "https://github.com/CrispierVase/Vex-V5-Python-Interpreter"
+"Bug Tracker" = "https://github.com/CrispierVase/Vex-V5-Python-Interpreter/issues"
