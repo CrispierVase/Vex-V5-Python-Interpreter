@@ -44,7 +44,7 @@
 
 > You will now want to copy this to the top of your file:
 
-    import VexV5Interpreter
+    import VexV5Interpreter.main as VexV5Interpreter
 
     SECONDS = '\x53'
     FORWARD = '\x46'
@@ -73,6 +73,11 @@
 # Tile
 > This class represents the squares the robot drives on.
 
+> This class has 2 methods. 
+>1. set_color
+>2. draw
+
+
 > If you wish to implement a color sensor, the color of a tile can be read as follows:
     
     tile.color
@@ -99,10 +104,39 @@
     self.y,
     self.image
 
+
+
+## Method Descriptions
+
+### set_color
+> This method takes no parameters. 
+
+> This method must be used after setting the color of a tile as is shown here:
+
+    tiles[0][0].color = RED
+    tiles[0][0].set_color()
+
+> The top left tile will now be red. 
+
+
+### draw
+> This method takes one method, however is has a default value. 
+>1. win (set to global pygame surface by default - do not change)
+
+> This method could be used like this: 
+
+    tile[1][2].draw()
+
+
+
 # Screen
 > This class is automatically created upon creation of a Brain class. 
 
-> This class has 4 methods. print, next_row, clear_screen, and clear_row. 
+> This class has 4 methods. 
+>1. print
+>2. next_row
+>3. clear_screen
+>4. clear_row. 
 
 > There is also a set_cursor method, however it has no function and only is present to prevent errors. 
 
@@ -196,7 +230,13 @@
 # Drivetrain
 > This class has 6 methods, though you should only need 4. 
 
-> These methods include in_valid_position, drive, drive_for, turn_for, turn, and draw.
+> These methods include
+>1. in_valid_position
+>2. drive
+>3. drive_for
+>4. turn_for
+>5. turn
+>6. draw.
 
 > You should never need to use in_valid_position or draw. 
 
@@ -211,10 +251,10 @@
         # do something
     elif not drivetrain.in_valid_position:
         # do something else
+
 ### drive
 > This method takes 1 parameter. 
-
-1. Direction. This should be either FORWARD or REVERSE
+>1. Direction. This should be either FORWARD or REVERSE
 
 > This method drives the robot forever. Between each spot it moves, the robot will wait the drivetrain.wait_duration, which defaults to 1.  
 
@@ -259,7 +299,7 @@
 
     while True:
         drivetrain.drive_for(FORWARD, 4, INCHES)
-        drivetrain.turn(LEFT, 90, DEGREES)
+        drivetrain.turn_for(LEFT, 90, DEGREES)
     
 ## Expected Output
 > The robot will drive to each edge, then turn left. 

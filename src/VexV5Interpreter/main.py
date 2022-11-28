@@ -38,6 +38,10 @@ class Tile:
         self.x = x
         self.y = y
         self.color = color
+        self.set_color()
+
+
+    def set_color(self):
         if self.color == GREEN:
             self.image = pygame.image.load('graphics/tile-green.png')
         elif self.color == RED:
@@ -205,7 +209,4 @@ class Drivetrain:
         win.blit(pygame.transform.scale(pygame.transform.rotate(self.image, ((
             self.direction - 1) % 4) * 90), (tile_size[0], tile_size[1])), middle)
         pygame.display.flip()
-
-
-drivetrain = Drivetrain()
-brain = Brain()
+        

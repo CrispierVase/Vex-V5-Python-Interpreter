@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "VexV5Interpreter"
-version = "0.1.1"
+version = "0.1.6"
 authors = [
   { name="Bryson Smith", email="brysonisaiah0115@yahoo.com" },
 ]
